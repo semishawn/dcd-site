@@ -1,0 +1,23 @@
+:root {
+	/* Colors */
+	--color1: #ff82b8;
+	--color2: #ffc0cb;
+	--color3: #ffe0e9;
+	--color4: #c00053;
+
+	/* Fonts */
+	--font1: "Gimbo";
+	--font2: "Cardboard Cat";
+
+	/* Screen Sizes */
+	--aspect-ratio: calc(16 / 9);
+	--screen-width: 70vw;
+	
+	/* Button Sizes */
+	--btn-font-size: calc(var(--screen-width) / 33);
+	--btn-height: calc(1.75 * var(--btn-font-size));
+	--btn-padding: calc(var(--btn-font-size) / 2);
+	--btn-border-size: calc(var(--btn-font-size) / 10);
+	--btn-border-radius: calc(var(--btn-font-size) / 4);
+	--corner-btn-spacing: calc(var(--screen-width) / 70);
+}

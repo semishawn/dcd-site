@@ -1,0 +1,330 @@
+---
+title: DOUBLE CAT DELUXE
+
+screens: [
+	"play",
+	"how to play",
+	"controls",
+	"credits"
+]
+
+cats: [
+	"SAUSAGE",
+	"QUESO",
+	"CANADA",
+	"JOHN, JON, & JEAN",
+	"OwO",
+	"JUPITER",
+	"GWENDOLINE",
+	"IGOR",
+	"TEXAS",
+	"MR. MISTER",
+	"QWERTY",
+	"TOOTHPICK"
+]
+
+stages: [
+	"rectangular",
+	"semicircular",
+	"triangular"
+]
+---
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ page.title }}</title>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
+	<script src="https://kit.fontawesome.com/5978d27576.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"></script>
+
+	<link rel="stylesheet" href="css/variables.css">
+	<link rel="stylesheet" href="fonts/fonts.css">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+	<main>
+		<div class="screen title-screen">
+			<img class="logo" src="img/logos/logo.webp">
+
+			{%- for screen in page.screens %}
+			<button class="btn pressable-btn title-btn" data-screen="{{ screen | slugify }}">
+				<div>{{ screen | upcase }}</div>
+			</button>
+			{%- endfor %}
+		</div>
+
+
+
+		<div class="screen choose-your-cat-screen">
+			<div class="screen-head">
+				<button class="btn pressable-btn corner-btn back-btn">
+					<div>
+						<i class="fa-solid fa-arrow-left-long"></i>
+					</div>
+				</button>
+
+				<div class="screen-header">
+					{% for i in (1..2) %}<div>CHOOSE YOUR CAT</div>{% endfor %}
+				</div>
+	
+				<button class="btn pressable-btn corner-btn next-btn hide-btn">
+					<div>
+						<i class="fa-solid fa-arrow-right-long"></i>
+					</div>
+				</button>
+			</div>
+
+			<div class="screen-body">
+				<div class="cat-select-container">
+					<div class="cat-btn-container">
+						<div class="cat-btn-grid">
+							{%- for cat in page.cats %}
+							<button class="cat-btn" data-cat="{{ cat | slugify }}">
+								<div class="cat-btn-pic">
+									<img src="img/cats/{{ cat | slugify }}.png">
+								</div>
+								<div class="cat-btn-label">{{ cat }}</div>
+							</button>
+							{%- endfor %}
+						</div>
+		
+						<button class="cat-btn random-btn">?</button>
+					</div>
+	
+					<div class="bed-container">
+						<img class="bed" src="img/beds/bed1.webp">
+						<img class="bed" src="img/beds/bed2.webp">
+					</div>
+				</div>
+
+				<button class="btn pressable-btn corner-btn reset-btn">
+					<div>
+						<i class="fa-solid fa-arrow-rotate-right"></i>
+					</div>
+				</button>
+			</div>
+		</div>
+
+
+
+		<div class="screen stage-select-screen">
+			<div class="screen-head">
+				<button class="btn pressable-btn corner-btn back-btn">
+					<div>
+						<i class="fa-solid fa-arrow-left-long"></i>
+					</div>
+				</button>
+
+				<div class="screen-header">
+					{% for i in (1..2) %}<div>STAGE SELECT</div>{% endfor %}
+				</div>
+	
+				<button class="btn pressable-btn corner-btn next-btn hide-btn">
+					<div>
+						<i class="fa-solid fa-arrow-right-long"></i>
+					</div>
+				</button>
+			</div>
+
+			<div class="screen-body">
+				<div class="stage-select-container">
+					<div class="stage-btn-container">
+						<div class="stage-btn-grid">
+							{%- for stage in page.stages %}
+							<button class="stage-btn" data-stage="{{ stage }}">
+								<div class="stage-btn-pic">
+									<div class="mini-stage"></div>
+								</div>
+								<div class="stage-btn-label">{{ stage | upcase }}</div>
+							</button>
+							{%- endfor %}
+						</div>
+
+						<button class="stage-btn random-btn">?</button>
+					</div>
+	
+					<div class="preview-container">
+						<div class="preview-screen">
+							<div class="preview-screen-glass"></div>
+							<div class="preview-screen-bottom">
+								<i class="fa-solid fa-paw"></i> Stage Preview
+							</div>
+						</div>
+						<div class="preview-stem"></div>
+						<div class="preview-base"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="screen battle-settings-screen">
+			<div class="screen-head">
+				<button class="btn pressable-btn corner-btn back-btn">
+					<div>
+						<i class="fa-solid fa-arrow-left-long"></i>
+					</div>
+				</button>
+
+				<div class="screen-header">
+					{% for i in (1..2) %}<div>BATTLE SETTINGS</div>{% endfor %}
+				</div>
+	
+				<button class="btn pressable-btn corner-btn fight-btn hide-btn">
+					<div>
+						<i class="fa-solid fa-shield-cat"></i>
+					</div>
+				</button>
+			</div>
+
+			<div class="screen-body">
+				<button class="btn pressable-btn corner-btn reset-btn">
+					<div>
+						<i class="fa-solid fa-arrow-rotate-right"></i>
+					</div>
+				</button>
+
+				<div class="idk">I HAVEN'T IMPLEMENTED<br>THIS SCREEN YET</div>
+			</div>
+		</div>
+
+
+
+		<div class="screen how-to-play-screen">
+			<div class="screen-head">
+				<button class="btn pressable-btn corner-btn back-btn">
+					<div>
+						<i class="fa-solid fa-arrow-left-long"></i>
+					</div>
+				</button>
+
+				<div class="screen-header">
+					{% for i in (1..2) %}<div>HOW TO PLAY</div>{% endfor %}
+				</div>
+			</div>
+
+			<div class="screen-body">
+				<div class="idk">I HAVEN'T IMPLEMENTED<br>THIS SCREEN YET</div>
+			</div>
+		</div>
+
+
+
+		<div class="screen controls-screen">
+			<div class="screen-head">
+				<button class="btn pressable-btn corner-btn back-btn">
+					<div>
+						<i class="fa-solid fa-arrow-left-long"></i>
+					</div>
+				</button>
+
+				<div class="screen-header">
+					{% for i in (1..2) %}<div>CONTROLS</div>{% endfor %}
+				</div>
+			</div>
+
+			<div class="screen-body">
+				<div class="keys-container">
+					<div class="key-section" data-player="1">
+						<div class="key-label top">Player 1</div>
+						<div class="key-wrapper">
+							<button class="btn direction-key" data-direction="up"><div>W</div></button>
+							<div class="direction-key-bottom-container">
+								<button class="btn direction-key" data-direction="left"><div>A</div></button>
+								<button class="btn direction-key" data-direction="down"><div>S</div></button>
+								<button class="btn direction-key" data-direction="right"><div>D</div></button>
+							</div>
+						</div>
+						<div class="key-label bottom">Movement</div>
+					</div>
+	
+					<div class="key-section" data-player="2">
+						<div class="key-label top">Player 2</div>
+						<div class="key-wrapper">
+							<button class="btn direction-key" data-direction="up"><div><i class="fa-solid fa-play"></i></div></button>
+							<div class="direction-key-bottom-container">
+								<button class="btn direction-key" data-direction="left"><div><i class="fa-solid fa-play"></i></div></button>
+								<button class="btn direction-key" data-direction="down"><div><i class="fa-solid fa-play"></i></div></button>
+								<button class="btn direction-key" data-direction="right"><div><i class="fa-solid fa-play"></i></div></button>
+							</div>
+						</div>
+						<div class="key-label bottom">Movement</div>
+					</div>
+	
+					<div class="key-section">
+						<div class="key-wrapper">
+							<button class="btn space-key"><div>Space</div></button>
+						</div>
+						<div class="key-label bottom">Draw Card</div>
+					</div>
+	
+					<div class="key-section">
+						<div class="key-wrapper">
+							<button class="btn escape-key"><div>Esc</div></button>
+						</div>
+						<div class="key-label bottom">Pause</div>
+					</div>
+	
+					<div class="demo-container directions-demo-container"></div>
+	
+					<div class="demo-container draw-card-demo-container">
+						<div class="demo-flip-card-container">
+							{% for i in (1..2) %}
+							<div class="demo-flip-card">
+								<div class="demo-flip-card-inner">
+									<div class="demo-flip-card-back">
+										<img src="img/card-back.webp">
+									</div>
+
+									<div class="demo-flip-card-front">
+										<div>insert new card design here</div>
+									</div>
+								</div>
+							</div>
+							{%- endfor %}
+						</div>
+
+						<div class="demo-static-card"></div>
+					</div>
+
+					<div class="demo-container pause-demo-container">
+						<i class="fa-solid fa-pause"></i>
+						<i class="fa-solid fa-play pause-demo-hide"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="screen credits-screen">
+			<div class="screen-head">
+				<button class="btn pressable-btn corner-btn back-btn">
+					<div>
+						<i class="fa-solid fa-arrow-left-long"></i>
+					</div>
+				</button>
+
+				<div class="screen-header">
+					{% for i in (1..2) %}<div>CREDITS</div>{% endfor %}
+				</div>
+			</div>
+
+			<div class="screen-body">
+				<div class="idk">I HAVEN'T IMPLEMENTED<br>THIS SCREEN YET</div>
+			</div>
+		</div>
+	</main>
+
+	<script src="js/main.js"></script>
+	<script src="js/screen-buttons.js"></script>
+	<script src="js/gameplay.js"></script>
+</body>
+
+</html>

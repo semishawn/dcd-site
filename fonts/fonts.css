@@ -1,0 +1,38 @@
+/* Gimbo */
+@font-face {
+	font-family: "Gimbo";
+	font-weight: 400;
+	font-style: normal;
+	src: url("gimbo/Gimbo-Ultra-Soft.woff2") format("woff2");
+}
+
+
+
+/* Cardboard Cat */
+@font-face {
+	font-family: "Cardboard Cat";
+	font-weight: 300;
+	font-style: normal;
+	src: url("cardboard-cat/CardboardCat-Light.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Cardboard Cat";
+	font-weight: 400;
+	font-style: normal;
+	src: url("cardboard-cat/CardboardCat-Regular.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Cardboard Cat";
+	font-weight: 700;
+	font-style: normal;
+	src: url("cardboard-cat/CardboardCat-Bold.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Cardboard Cat";
+	font-weight: 800;
+	font-style: normal;
+	src: url("cardboard-cat/CardboardCat-ExtraBold.woff2") format("woff2");
+}
