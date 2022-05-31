@@ -1,8 +1,8 @@
 :root {
 	/* Colors */
-	--color1: #ff82b8;
+	--color1: #ffe0e9;
 	--color2: #ffc0cb;
-	--color3: #ffe0e9;
+	--color3: #ff82b8;
 	--color4: #c00053;
 
 	/* Fonts */
@@ -11,13 +11,14 @@
 
 	/* Screen Sizes */
 	--aspect-ratio: calc(16 / 9);
-	--screen-width: 70vw;
+	--screen-width: 1000px;
 	
 	/* Button Sizes */
-	--btn-font-size: calc(var(--screen-width) / 33);
-	--btn-height: calc(1.75 * var(--btn-font-size));
-	--btn-padding: calc(var(--btn-font-size) / 2);
-	--btn-border-size: calc(var(--btn-font-size) / 10);
-	--btn-border-radius: calc(var(--btn-font-size) / 4);
-	--corner-btn-spacing: calc(var(--screen-width) / 70);
+	--btn-font-size: 0.03rem;
+	--btn-height: 0.053rem;
+	--btn-padding: 0.015rem;
+	--btn-border-size: 0.003rem;
+	--btn-border-radius: 0.0075rem;
+	--btn-transition: 0.05s;
+	--corner-btn-spacing: 0.0143rem;
 }

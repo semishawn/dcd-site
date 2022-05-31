@@ -1,6 +1,6 @@
 var zoneHeight = $(".directions-demo-container").height();
 var zoneWidth = $(".directions-demo-container").width();
-var color1 = $(":root").css("--color1");
+var color3 = $(":root").css("--color3");
 
 var engine = Matter.Engine.create();
 var render = Matter.Render.create({
@@ -9,7 +9,7 @@ var render = Matter.Render.create({
 	options: {
 		height: zoneHeight,
 		width: zoneWidth,
-		background: color1,
+		background: color3,
 		wireframes: false
 	}
 });
@@ -118,7 +118,18 @@ var purrpurr = Matter.Bodies.rectangle(
 
 var demoCatBodies = [meowmeow, purrpurr];
 
-function resetDemoCats() {
+
+
+// Run functionality
+Matter.Composite.add(engine.world, demoWallBodies);
+Matter.Composite.add(engine.world, demoCatBodies);
+Matter.Runner.run(engine);
+Matter.Render.run(render);
+
+function runDemoCats() {
+	engine.enabled = true;
+	Matter.Render.run(render);
+
 	Matter.Body.setPosition(
 		meowmeow,
 		{
@@ -138,13 +149,11 @@ function resetDemoCats() {
 	Matter.Body.setAngle(purrpurr, 0);
 }
 
-
-
-// Run Matter.js
-Matter.World.add(engine.world, demoWallBodies);
-Matter.World.add(engine.world, demoCatBodies);
-Matter.Engine.run(engine);
-Matter.Render.run(render);
+function pauseDemoCats() {
+	engine.enabled = false;
+	Matter.Render.stop(render);
+}
+pauseDemoCats();
 
 
 

@@ -9,7 +9,7 @@ $(`.title-btn[data-screen="how-to-play"]`).click(function() {
 
 $(`.title-btn[data-screen="controls"]`).click(function() {
 	$(".controls-screen").maxZ(".screen");
-	resetDemoCats();
+	runDemoCats();
 	$(".flipped").remove();
 });
 
@@ -22,16 +22,18 @@ $(`.title-btn[data-screen="credits"]`).click(function() {
 // Back buttons
 $(".choose-your-cat-screen .back-btn").click(function() {
 	$(".title-screen").maxZ(".screen");
+	$(".choose-your-cat-screen .reset-btn").click();
 });
 
 $(".stage-select-screen .back-btn").click(function() {
-	$(".reset-btn").click();
 	$(".choose-your-cat-screen").maxZ(".screen");
 	$(".stage-btn").removeClass("stage-selection");
+	$(".stage-btn").first().addClass("stage-selection");
 });
 
 $(".battle-settings-screen .back-btn").click(function() {
 	$(".stage-select-screen").maxZ(".screen");
+	$(".battle-settings-screen .reset-btn").click();
 });
 
 $(".how-to-play-screen .back-btn").click(function() {
@@ -40,6 +42,7 @@ $(".how-to-play-screen .back-btn").click(function() {
 
 $(".controls-screen .back-btn").click(function() {
 	$(".title-screen").maxZ(".screen");
+	pauseDemoCats();
 });
 
 $(".credits-screen .back-btn").click(function() {
@@ -70,6 +73,8 @@ $(".choose-your-cat-screen .reset-btn").click(function() {
 	$(".choose-your-cat-screen .next-btn").addClass("hide-btn");
 });
 
-/* $(".battle-settings-screen .reset-btn").click(function() {
-
-}); */
+$(".battle-settings-screen .reset-btn").click(function() {
+	$(".setting-btn").removeClass("setting-selection");
+	$(`.setting-btn[data-setting="normal"]`).addClass("setting-selection");
+	slider.val(20).trigger("input");
+});

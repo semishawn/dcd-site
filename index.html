@@ -34,16 +34,27 @@ stages: [
 <html>
 
 <head>
+	<!-- Meta -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{{ page.title }}</title>
-	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
-	<script src="https://kit.fontawesome.com/5978d27576.js" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"></script>
 
+	<!-- CSS -->
 	<link rel="stylesheet" href="css/variables.css">
 	<link rel="stylesheet" href="fonts/fonts.css">
 	<link rel="stylesheet" href="css/main.css">
+
+	<!-- Mobile -->
+	<style>
+		@media only screen and (max-width: 1000px) {:root {--screen-width: 800px;}}
+		@media only screen and (max-width: 800px) {:root {--screen-width: 600px;}}
+		@media only screen and (max-width: 600px) {:root {--screen-width: 400px;}}
+	</style>
+
+	<!-- Plugins -->
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+	<script src="https://kit.fontawesome.com/5978d27576.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"></script>
 </head>
 
 <body>
@@ -136,7 +147,7 @@ stages: [
 					<div class="stage-btn-container">
 						<div class="stage-btn-grid">
 							{%- for stage in page.stages %}
-							<button class="stage-btn" data-stage="{{ stage }}">
+							<button class="stage-btn {% if forloop.first %}stage-selection{% endif %}" data-stage="{{ stage }}">
 								<div class="stage-btn-pic">
 									<div class="mini-stage"></div>
 								</div>
@@ -176,7 +187,7 @@ stages: [
 					{% for i in (1..2) %}<div>BATTLE SETTINGS</div>{% endfor %}
 				</div>
 	
-				<button class="btn pressable-btn corner-btn fight-btn hide-btn">
+				<button class="btn pressable-btn corner-btn fight-btn">
 					<div>
 						<i class="fa-solid fa-shield-cat"></i>
 					</div>
@@ -190,7 +201,64 @@ stages: [
 					</div>
 				</button>
 
-				<div class="idk">I HAVEN'T IMPLEMENTED<br>THIS SCREEN YET</div>
+				<div class="battle-setting-container">
+					<div class="battle-setting-row">
+						<div class="battle-setting">
+							<div class="battle-setting-label">POINTS TO WIN</div>
+							<div class="battle-setting-slant"></div>
+							<div class="battle-setting-option-container">
+								<div class="points-to-win-slider-container">
+									<input class="points-to-win-slider setting-selection" type="range" min="10" max="30" value="20">
+									<div class="points-to-win-thumb-number">20</div>
+								</div>
+							</div>
+						</div>
+
+						<button class="setting-btn random-btn">?</button>
+					</div>
+
+					<div class="battle-setting-row">
+						<div class="battle-setting">
+							<div class="battle-setting-label">CAT SIZE</div>
+							<div class="battle-setting-slant"></div>
+							<div class="battle-setting-option-container">
+								<button class="setting-btn" data-setting="tiny"><span>TINY</span></button>
+								<button class="setting-btn setting-selection" data-setting="normal">NORMAL</button>
+								<button class="setting-btn" data-setting="giant"><span>GIANT</span></button>
+							</div>
+						</div>
+
+						<button class="setting-btn random-btn">?</button>
+					</div>
+	
+					<div class="battle-setting-row">
+						<div class="battle-setting">
+							<div class="battle-setting-label">CAT SPEED</div>
+							<div class="battle-setting-slant"></div>
+							<div class="battle-setting-option-container">
+								<button class="setting-btn" data-setting="slow"><span>SLOW</span></button>
+								<button class="setting-btn setting-selection" data-setting="normal">NORMAL</button>
+								<button class="setting-btn" data-setting="fast">FAST</button>
+							</div>
+						</div>
+
+						<button class="setting-btn random-btn">?</button>
+					</div>
+	
+					<div class="battle-setting-row">
+						<div class="battle-setting">
+							<div class="battle-setting-label">CAT JUMPS</div>
+							<div class="battle-setting-slant"></div>
+							<div class="battle-setting-option-container">
+								<button class="setting-btn" data-setting="dense">DENSE</button>
+								<button class="setting-btn setting-selection" data-setting="normal">NORMAL</button>
+								<button class="setting-btn" data-setting="feathery">FEATHERY</button>
+							</div>
+						</div>
+
+						<button class="setting-btn random-btn">?</button>
+					</div>
+				</div>
 			</div>
 		</div>
 

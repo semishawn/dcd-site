@@ -4,3 +4,11 @@ description: ""
 
 baseurl: "/dcd-site"
 url: ""
+
+plugins:
+  - jekyll-minifier
+
+jekyll-minifier:
+  uglifier_args:
+    harmony: true
+  exclude: "css/main.css"

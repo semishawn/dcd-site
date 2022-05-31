@@ -31,19 +31,50 @@ $(".cat-btn").click(function() {
 $(".stage-btn").click(function() {
 	$(".stage-btn").removeClass("stage-selection");
 	$(this).addClass("stage-selection");
-	$(".fight-btn").removeClass("hide-btn");
+});
+
+
+
+// Battle settings select functionality
+var slider = $(".points-to-win-slider");
+var sliderThumb = $(".points-to-win-thumb-number");
+var sliderWidth = slider.width();
+var sliderMin = slider.attr("min");
+var sliderMax = slider.attr("max");
+var sliderSteps = sliderMax - sliderMin;
+
+slider.on("input change", function() {
+	var value = $(this).val();
+	var proportionalValue = value - sliderMin;
+	var thumbLeft = (sliderWidth / sliderSteps) * proportionalValue;
+	var thumbDimension = sliderThumb.width();
+	var thumbRight = (thumbDimension / sliderSteps) * proportionalValue;
+	var thumbPlacement = thumbLeft - thumbRight;
+	sliderThumb.css("left", thumbPlacement);
+	sliderThumb.html(value);
+	$(".battle-setting-row").first().find(".random-btn").removeClass("setting-selection");
+});
+
+$(".battle-setting-row").first().find(".random-btn").click(function() {
+	slider.val(20).trigger("input");
+	sliderThumb.html("?");
+});
+
+$(".setting-btn, .points-to-win-slider").click(function() {
+	var settingRow = $(this).closest(".battle-setting-row");
+	settingRow.find(".setting-btn, .points-to-win-slider").removeClass("setting-selection");
+	$(this).addClass("setting-selection");
 });
 
 
 
 // Controls screen demos
-$(document).on("keydown keyup", function(e) {
-	e.preventDefault();
+var wasd = [87, 83, 65, 68];
+var arrows = [38, 40, 37, 39];
 
-	var key = "";
+$(document).on("keydown keyup", function(e) {
+	var key;
 	var keyDoesSomething = false;
-	var wasd = [87, 83, 65, 68];
-	var arrows = [38, 40, 37, 39];
 
 	if (wasd.includes(e.which) || arrows.includes(e.which)) {
 		if (wasd.includes(e.which)) player = 1;
@@ -60,6 +91,8 @@ $(document).on("keydown keyup", function(e) {
 
 	// Space
 	else if (e.which == 32) {
+		e.preventDefault();
+
 		if (e.type == "keydown") {
 			var card = $(".demo-flip-card").eq(1).clone();
 			$(".demo-flip-card-container").prepend(card);
@@ -72,6 +105,8 @@ $(document).on("keydown keyup", function(e) {
 
 	// Escape button
 	else if (e.which == 27) {
+		e.preventDefault();
+		
 		key = $(".escape-key");
 		keyDoesSomething = true;
 
@@ -86,3 +121,16 @@ $(document).on("keydown keyup", function(e) {
 		else key.removeClass("pressed");
 	}
 });
+
+
+
+// Fullscreen functionality
+/* $(document).keydown(function(e) {
+	var game = $("main")[0];
+
+	if (e.which == 70) {
+		if (game.requestFullscreen) game.requestFullscreen();
+		else if (game.webkitRequestFullscreen) game.webkitRequestFullscreen();
+		else if (game.msRequestFullscreen) game.msRequestFullscreen();
+	}
+}); */
