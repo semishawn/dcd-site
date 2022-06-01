@@ -21,4 +21,7 @@
 	--btn-border-radius: 0.0075rem;
 	--btn-transition: 0.05s;
 	--corner-btn-spacing: 0.0143rem;
+
+	--player1-color: #c00;
+	--player2-color: #00c;
 }

@@ -4,13 +4,16 @@ $(`.title-btn[data-screen="play"]`).click(function() {
 });
 
 $(`.title-btn[data-screen="how-to-play"]`).click(function() {
+	tutorialCardCount = 1;
+	$(".tutorial-card").first().maxZ(".tutorial-card");
+	$(".tutorial-btn").first().addClass("hide-btn");
 	$(".how-to-play-screen").maxZ(".screen");
 });
 
 $(`.title-btn[data-screen="controls"]`).click(function() {
-	$(".controls-screen").maxZ(".screen");
 	runDemoCats();
 	$(".flipped").remove();
+	$(".controls-screen").maxZ(".screen");
 });
 
 $(`.title-btn[data-screen="credits"]`).click(function() {
@@ -34,6 +37,10 @@ $(".stage-select-screen .back-btn").click(function() {
 $(".battle-settings-screen .back-btn").click(function() {
 	$(".stage-select-screen").maxZ(".screen");
 	$(".battle-settings-screen .reset-btn").click();
+});
+
+$(".card-screen .back-btn").click(function() {
+	$(".battle-settings-screen").maxZ(".screen");
 });
 
 $(".how-to-play-screen .back-btn").click(function() {
@@ -61,7 +68,7 @@ $(".stage-select-screen .next-btn").click(function() {
 });
 
 $(".battle-settings-screen .fight-btn").click(function() {
-	$(".battle-screen").maxZ(".screen");
+	$(".card-screen").maxZ(".screen");
 });
 
 

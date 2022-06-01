@@ -68,6 +68,26 @@ $(".setting-btn, .points-to-win-slider").click(function() {
 
 
 
+// How to play screen functionality
+$(".tutorial-card").first().maxZ(".tutorial-card");
+
+var tutorialCardCount = 1;
+var tutorialCardAmount = $(".tutorial-card").length;
+$(".tutorial-btn").click(function() {
+	if ($(this).is(".tutorial-back-btn")) tutorialCardCount--;
+	if ($(this).is(".tutorial-next-btn")) tutorialCardCount++;
+
+	if      (tutorialCardCount > 1) $(".tutorial-btn").first().removeClass("hide-btn");
+	else if (tutorialCardCount == 1) $(".tutorial-btn").first().addClass("hide-btn");
+
+	if      (tutorialCardCount < tutorialCardAmount) $(".tutorial-btn").last().removeClass("hide-btn");
+	else if (tutorialCardCount == tutorialCardAmount) $(".tutorial-btn").last().addClass("hide-btn");
+
+	$(".tutorial-card").eq(tutorialCardCount - 1).maxZ(".tutorial-card");
+});
+
+
+
 // Controls screen demos
 var wasd = [87, 83, 65, 68];
 var arrows = [38, 40, 37, 39];

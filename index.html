@@ -43,6 +43,9 @@ stages: [
 	<link rel="stylesheet" href="css/variables.css">
 	<link rel="stylesheet" href="fonts/fonts.css">
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/play.css">
+	<link rel="stylesheet" href="css/how-to-play.css">
+	<link rel="stylesheet" href="css/controls.css">
 
 	<!-- Mobile -->
 	<style>
@@ -97,7 +100,7 @@ stages: [
 							{%- for cat in page.cats %}
 							<button class="cat-btn" data-cat="{{ cat | slugify }}">
 								<div class="cat-btn-pic">
-									<img src="img/cats/{{ cat | slugify }}.png">
+									<img src="img/pixel-cats/{{ cat | slugify }}.png">
 								</div>
 								<div class="cat-btn-label">{{ cat }}</div>
 							</button>
@@ -263,6 +266,21 @@ stages: [
 		</div>
 
 
+		<div class="screen card-screen">
+			<div class="screen-head">
+				<button class="btn pressable-btn corner-btn back-btn">
+					<div>
+						<i class="fa-solid fa-arrow-left-long"></i>
+					</div>
+				</button>
+			</div>
+
+			<div class="screen-body">
+				<div class="idk">I HAVEN'T IMPLEMENTED<br>THIS SCREEN YET</div>
+			</div>
+		</div>
+
+
 
 		<div class="screen how-to-play-screen">
 			<div class="screen-head">
@@ -278,7 +296,85 @@ stages: [
 			</div>
 
 			<div class="screen-body">
-				<div class="idk">I HAVEN'T IMPLEMENTED<br>THIS SCREEN YET</div>
+				<button class="btn tutorial-btn tutorial-back-btn pressable-btn hide-btn">
+					<div>
+						<i class="fa-solid fa-play"></i>
+					</div>
+				</button>
+
+				<div class="tutorial-card-container">
+					<div class="tutorial-card">
+						<div>Welcome to</div>
+						<div>
+							{%- for i in (1..2) %}
+							<div>
+								DOUBLE CAT&nbsp;
+								<span>D</span>
+								<span>E</span>
+								<span>L</span>
+								<span>U</span>
+								<span>X</span>
+								<span>E</span>
+								&nbsp;!
+							</div>
+							{%- endfor %}
+						</div>
+						<div>The best game about cats fighting since the underground cat fighting ring that was outlawed in 2010.</div>
+					</div>
+
+					<div class="tutorial-card">
+						<div>Each player selects a cat brawler.</div>
+						<div>
+							<button class="cat-btn player1-cat-selection">
+								<div class="cat-btn-pic">
+									<img src="img/demo-cats/meowmeow.webp">
+								</div>
+								<div class="cat-btn-label">PLAYER 1</div>
+							</button>
+
+							<button class="cat-btn player2-cat-selection">
+								<div class="cat-btn-pic">
+									<img src="img/demo-cats/purrpurr.webp">
+								</div>
+								<div class="cat-btn-label">PLAYER 2</div>
+							</button>
+						</div>
+					</div>
+
+					<div class="tutorial-card">
+						<div>Choose a stage to battle upon.</div>
+						<div>
+							<div>
+								<img src="img/demo-cats/meowmeow.webp">
+								<img src="img/demo-cats/purrpurr.webp">
+							</div>
+							<div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="tutorial-card">
+						<div>Choose your battle settings.</div>
+					</div>
+
+					<div class="tutorial-card">
+						<div>Battle comences!</div>
+						<div>The stage will shrink as the round continues.</div>
+						<div>Knock each other off of the stage to win the round.</div>
+					</div>
+				</div>
+
+				<button class="btn tutorial-btn tutorial-next-btn pressable-btn">
+					<div>
+						<i class="fa-solid fa-play"></i>
+					</div>
+				</button>
 			</div>
 		</div>
 
